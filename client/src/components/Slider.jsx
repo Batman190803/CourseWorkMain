@@ -1,23 +1,29 @@
 import React, {useState} from "react";
 
 function Slider({images}) {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(1);
 
     const nextSlide = () => {
-        setCurrentIndex((currentIndex + 1) % images.length);
+        if(currentIndex<10)
+            setCurrentIndex(currentIndex + 1);
+        else
+            setCurrentIndex(1)
     };
 
     const prevSlide = () => {
-        setCurrentIndex((currentIndex - 1 + images.length) % images.length);
+        if(currentIndex>1)
+            setCurrentIndex(currentIndex - 1);
+        else
+            setCurrentIndex(10)
     };
 
     return (
         <div className={'font-KdamThmorPro'}>
             <div className="p-2 w-full text-center">
                 <p className=" text-4xl font-bold text-gray-700">
-                    {images[currentIndex] ? images[currentIndex].date : null}
+                    {images[0].date}
                 </p>
-                <p>{images[currentIndex] ? images[currentIndex].description : null}</p>
+                <p>{images[0].description}</p>
             </div>
             <div className="flex justify-between">
                 <button
@@ -28,7 +34,8 @@ function Slider({images}) {
                 </button>
                 <img
                     className=" w-1/3 h-3/5"
-                    src={`http://localhost:1488/api/news/${images[currentIndex]?.img}`}
+                    src={require(`../assets/img/${currentIndex}.jpg`)}
+                    
                     alt={`Slide ${currentIndex}`}
                 />
                 <button
