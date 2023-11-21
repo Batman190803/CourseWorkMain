@@ -1,8 +1,9 @@
 import React from 'react';
-import 'react-router-dom'
 import './Header.css';
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
+    const navigate = useNavigate();
     return (
     <>
         <div className={'w-screen h-[10vw] bg-purple-700 flex'}>
@@ -13,16 +14,16 @@ const Header = () => {
         <div>
             <ul className='navigation bg-purple-700'>
                 <li>
-                    <span>Головна</span>
+                    <span onClick={()=>navigate('/')}>Головна</span>
                 </li>
                 <li>
-                    <span>Галерея</span>
+                    <span onClick={()=>navigate('/gallery')}>Галерея</span>
                 </li>
                 <li>
-                    <span>Новини</span>
+                    <span onClick={()=>navigate('/news')}>Новини</span>
                 </li>
                 <li>
-                    <span>Контакти</span>
+                    <span onClick={()=>navigate('/about')}>Контакти</span>
                 </li>
             </ul>
         </div>

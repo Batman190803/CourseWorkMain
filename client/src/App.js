@@ -1,14 +1,21 @@
 import './App.css';
-import Header from "./components/Header";
-import FirstSection from "./components/FirstSection";
-import Footer from "./components/Footer";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Main from "./pages/Main/Main";
+import Gallery from "./pages/Gallery/Gallery";
+import News from "./pages/News/News";
+import About from "./pages/About/About";
 
 function App() {
     return (
         <>
-            <Header/>
-            <FirstSection/>
-            <Footer/>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/gallery" element={<Gallery/>}/>
+                    <Route path="/news" element={<News/>}/>
+                    <Route path="/about" element={<About/>}/>
+                </Routes>
+            </BrowserRouter>
         </>
     );
 }
